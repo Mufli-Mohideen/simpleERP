@@ -34,4 +34,5 @@ class ItemReportModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
+
 ?>
