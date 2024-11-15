@@ -34,7 +34,6 @@
 <body>
 
     <div class="container custom-container">
-        <!-- Tabs for switching between forms -->
         <ul class="nav nav-tabs" id="customerTabs" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="add-tab" data-bs-toggle="tab" data-bs-target="#addCustomerForm"

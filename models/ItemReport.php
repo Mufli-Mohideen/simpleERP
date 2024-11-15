@@ -39,7 +39,6 @@ class ItemReportModel {
             $items[] = $row;
         }
 
-        // Return the items
         return $items;
     }
 }

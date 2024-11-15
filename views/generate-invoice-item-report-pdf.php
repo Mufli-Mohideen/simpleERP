@@ -2,12 +2,12 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require_once '../libs/fpdf/fpdf.php';  // Ensure FPDF library is included
-include_once '../config/db.php';        // Database connection
-include_once '../models/InvoiceItemReport.php';      // Invoice Item Report model
+require_once '../libs/fpdf/fpdf.php';
+include_once '../config/db.php';     
+include_once '../models/InvoiceItemReport.php';  
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Fetch the start and end dates from POST data
+
     $startDate = $_POST['start_date'] ?? null;
     $endDate = $_POST['end_date'] ?? null;
 
@@ -18,15 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $report = $invoiceItemReport->getInvoicesWithItemDetails($startDate, $endDate);
 
-        // Create a new PDF document
         $pdf = new FPDF();
-        $pdf->AddPage();  // Add a new page
+        $pdf->AddPage();
 
-        // Set title
         $pdf->SetFont('Arial', 'B', 16);
         $pdf->Cell(200, 10, 'Invoice Item Report', 0, 1, 'C');
 
-        // Add the date range to the PDF
         $pdf->SetFont('Arial', '', 12);
         $pdf->Ln(10);  // Line break
         $pdf->Cell(200, 10, "Date Range: $startDate to $endDate", 0, 1, 'C');
