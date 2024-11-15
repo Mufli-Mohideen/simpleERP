@@ -52,12 +52,11 @@
             </li>
         </ul>
 
-        <!-- Tab content for each form -->
         <div class="tab-content" id="itemTabsContent">
-            <!-- Add Item Form -->
             <div class="tab-pane fade show active" id="addItemForm" role="tabpanel">
                 <h4 class="mt-4">Add New Item</h4>
-                <form method="POST" action="add_item.php">
+                <form method="POST" action="http://localhost/CsquareProject/controllers/ItemController.php">
+                    <input type="hidden" name="action" value="add">
                     <div class="mb-3">
                         <label for="addItemCode" class="form-label">Item Code</label>
                         <input type="text" class="form-control" id="addItemCode" name="item_code" required>
@@ -68,11 +67,25 @@
                     </div>
                     <div class="mb-3">
                         <label for="addItemCategory" class="form-label">Category</label>
-                        <input type="text" class="form-control" id="addItemCategory" name="item_category" required>
+                        <select class="form-select" id="addItemCategory" name="item_category" required>
+                            <option value="" disabled selected>Select a Category</option>
+                            <option value="1">Printers</option>
+                            <option value="2">Laptops</option>
+                            <option value="3">Gadgets</option>
+                            <option value="4">Ink Bottles</option>
+                            <option value="5">Cartridges</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="addItemSubcategory" class="form-label">Subcategory</label>
-                        <input type="text" class="form-control" id="addItemSubcategory" name="item_subcategory">
+                        <select class="form-select" id="addItemSubcategory" name="item_subcategory">
+                            <option value="" disabled selected>Select a Subcategory</option>
+                            <option value="1">HP</option>
+                            <option value="2">Dell</option>
+                            <option value="3">Lenovo</option>
+                            <option value="4">Acer</option>
+                            <option value="5">Samsung</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="addItemQuantity" class="form-label">Quantity</label>
@@ -89,7 +102,8 @@
             <!-- Update Item Form -->
             <div class="tab-pane fade" id="updateItemForm" role="tabpanel">
                 <h4 class="mt-4">Update Item</h4>
-                <form method="POST" action="update_item.php">
+                <form method="POST" action="http://localhost/CsquareProject/controllers/ItemController.php">
+                    <input type="hidden" name="action" value="update">
                     <div class="mb-3">
                         <label for="updateItemId" class="form-label">Item ID</label>
                         <input type="text" class="form-control" id="updateItemId" name="item_id" required>
@@ -103,13 +117,28 @@
                         <input type="text" class="form-control" id="updateItemName" name="item_name">
                     </div>
                     <div class="mb-3">
-                        <label for="updateItemCategory" class="form-label">Category</label>
-                        <input type="text" class="form-control" id="updateItemCategory" name="item_category">
-                    </div>
-                    <div class="mb-3">
-                        <label for="updateItemSubcategory" class="form-label">Subcategory</label>
-                        <input type="text" class="form-control" id="updateItemSubcategory" name="item_subcategory">
-                    </div>
+                            <label for="updateItemCategory" class="form-label">Category</label>
+                            <select class="form-select" id="updateItemCategory" name="item_category" required>
+                                <option value="" disabled selected>Select a Category</option>
+                                <option value="1">Printers</option>
+                                <option value="2">Laptops</option>
+                                <option value="3">Gadgets</option>
+                                <option value="4">Ink Bottles</option>
+                                <option value="5">Cartridges</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="updateItemSubcategory" class="form-label">Subcategory</label>
+                            <select class="form-select" id="updateItemSubcategory" name="item_subcategory" required>
+                                <option value="" disabled selected>Select a Subcategory</option>
+                                <option value="1">HP</option>
+                                <option value="2">Dell</option>
+                                <option value="3">Lenovo</option>
+                                <option value="4">Acer</option>
+                                <option value="5">Samsung</option>
+                            </select>
+                        </div>
                     <div class="mb-3">
                         <label for="updateItemQuantity" class="form-label">Quantity</label>
                         <input type="number" class="form-control" id="updateItemQuantity" name="quantity">
@@ -125,7 +154,8 @@
             <!-- Delete Item Form -->
             <div class="tab-pane fade" id="deleteItemForm" role="tabpanel">
                 <h4 class="mt-4">Delete Item</h4>
-                <form method="POST" action="delete_item.php">
+                <form method="POST" action="http://localhost/CsquareProject/controllers/ItemController.php">
+                    <input type="hidden" name="action" value="delete">
                     <div class="mb-3">
                         <label for="deleteItemId" class="form-label">Item ID</label>
                         <input type="text" class="form-control" id="deleteItemId" name="item_id" required>
@@ -134,25 +164,49 @@
                 </form>
             </div>
 
-            <!-- Show All Items Section -->
             <div class="tab-pane fade" id="showAllItems" role="tabpanel">
                 <h4 class="mt-4">All Items</h4>
                 <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Item ID</th>
-                            <th>Item Code</th>
-                            <th>Item Name</th>
-                            <th>Category</th>
-                            <th>Subcategory</th>
-                            <th>Quantity</th>
-                            <th>Unit Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Data to be populated dynamically -->
-                    </tbody>
-                </table>
+    <thead>
+        <tr>
+            <th>Item Code</th>
+            <th>Item Name</th>
+            <th>Category</th>
+            <th>Subcategory</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php
+        require_once '../config/db.php';
+        require_once '../models/item.php';
+
+        $database = new Database();
+        $conn = $database->getConnection();
+
+        $itemModel = new Item($conn);
+
+        $items = $itemModel->getAllItems(); // Get all items
+
+        if (isset($items) && !empty($items)) {
+            foreach ($items as $item) {
+                echo "<tr>";
+                echo "<td>" . htmlspecialchars($item['item_code'] ?? 'N/A') . "</td>";
+                echo "<td>" . htmlspecialchars($item['item_name'] ?? 'N/A') . "</td>";
+                echo "<td>" . htmlspecialchars($item['item_category'] ?? 'N/A') . "</td>";
+                echo "<td>" . htmlspecialchars($item['item_subcategory'] ?? 'N/A') . "</td>";
+                echo "<td>" . htmlspecialchars($item['quantity'] ?? 'N/A') . "</td>";
+                echo "<td>" . htmlspecialchars($item['unit_price'] ?? 'N/A') . "</td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='6' class='text-center'>No items found</td></tr>";
+        }
+    ?>
+    </tbody>
+</table>
+
             </div>
         </div>
     </div>

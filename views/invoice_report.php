@@ -32,8 +32,8 @@
         }
 
         .table-container {
-            flex-grow: 1; /* Expand to fill remaining space */
-            overflow-y: auto; /* Scrollable content if needed */
+            flex-grow: 1;
+            overflow-y: auto;
         }
 
         .table {
