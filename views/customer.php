@@ -18,7 +18,6 @@
             height: 110vh;
         }
 
-        /* Ensure that each form starts from the top */
         .tab-pane {
             max-height: 600px;
             overflow-y: auto;
@@ -26,7 +25,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Add padding between tab content sections */
         .tab-content {
             margin-top: 10px;
         }
@@ -61,11 +59,16 @@
             <!-- Add Customer Form -->
             <div class="tab-pane fade show active" id="addCustomerForm" role="tabpanel">
                 <h4 class="mt-4">Add New Customer</h4>
-                <form method="POST" action="add_customer.php">
-                    <div class="mb-3">
-                        <label for="addTitle" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="addTitle" name="title" required>
-                    </div>
+                <form method="POST" action="http://localhost/CsquareProject/controllers/CustomerController.php">
+                <div class="mb-3">
+                    <label for="addTitle" class="form-label">Title</label>
+                    <select class="form-select" id="addTitle" name="title" required>
+                        <option value="" selected disabled>Select Title</option>
+                        <option value="Mr.">Mr.</option>
+                        <option value="Mrs.">Mrs.</option>
+                        <option value="Miss">Miss</option>
+                    </select>
+                </div>
                     <div class="mb-3">
                         <label for="addFirstName" class="form-label">First Name</label>
                         <input type="text" class="form-control" id="addFirstName" name="first_name" required>
@@ -84,23 +87,56 @@
                     </div>
                     <div class="mb-3">
                         <label for="addDistrict" class="form-label">District</label>
-                        <input type="text" class="form-control" id="addDistrict" name="district" required>
+                        <select class="form-select" id="addDistrict" name="district" required>
+                            <option value="" selected disabled>Select District</option>
+                            <option value="Ampara">Ampara</option>
+                            <option value="Anuradhapura">Anuradhapura</option>
+                            <option value="Badulla">Badulla</option>
+                            <option value="Batticaloa">Batticaloa</option>
+                            <option value="Colombo">Colombo</option>
+                            <option value="Galle">Galle</option>
+                            <option value="Gampaha">Gampaha</option>
+                            <option value="Hambantota">Hambantota</option>
+                            <option value="Jaffna">Jaffna</option>
+                            <option value="Kalutara">Kalutara</option>
+                            <option value="Kandy">Kandy</option>
+                            <option value="Kegalle">Kegalle</option>
+                            <option value="Kilinochchi">Kilinochchi</option>
+                            <option value="Kurunegala">Kurunegala</option>
+                            <option value="Mannar">Mannar</option>
+                            <option value="Matale">Matale</option>
+                            <option value="Matara">Matara</option>
+                            <option value="Moneragala">Moneragala</option>
+                            <option value="Mullaitivu">Mullaitivu</option>
+                            <option value="Nuwara Eliya">Nuwara Eliya</option>
+                            <option value="Polonnaruwa">Polonnaruwa</option>
+                            <option value="Puttalam">Puttalam</option>
+                            <option value="Rathnapura">Rathnapura</option>
+                            <option value="Vavuniya">Vavuniya</option>
+                        </select>
                     </div>
+
                     <button type="submit" class="btn btn-success w-100">Save Customer</button>
                 </form>
+
             </div>
 
             <!-- Update Customer Form -->
             <div class="tab-pane fade" id="updateCustomerForm" role="tabpanel">
                 <h4 class="mt-4">Update Customer</h4>
-                <form method="POST" action="update_customer.php">
+                <form method="POST">
                     <div class="mb-3">
                         <label for="updateId" class="form-label">Customer ID</label>
                         <input type="text" class="form-control" id="updateId" name="customer_id" required>
                     </div>
                     <div class="mb-3">
                         <label for="updateTitle" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="updateTitle" name="title">
+                        <select class="form-select" id="updateTitle" name="title">
+                            <option value="" selected disabled>Select Title</option>
+                            <option value="Mr.">Mr.</option>
+                            <option value="Mrs.">Mrs.</option>
+                            <option value="Miss">Miss</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="updateFirstName" class="form-label">First Name</label>
@@ -161,8 +197,8 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS for tabs functionality -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 

@@ -10,7 +10,7 @@
 
     <style>
         @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap");
-        
+
         body, html {
             height: 100%;
             margin: 0;
@@ -78,7 +78,7 @@
         .container-fluid {
             height: calc(100vh - 50px);
         }
-        
+
     </style>
 </head>
 
@@ -107,8 +107,6 @@
             </div>
 
             <div class="col-md-9 content-area" id="content">
-                <h2>Welcome to SimpleERP</h2>
-                <p>Select an option from the sidebar to view details.</p>
             </div>
         </div>
     </div>
@@ -124,6 +122,10 @@
                 })
                 .catch(error => console.error('Error loading content:', error));
         }
+
+        window.onload = function() {
+            loadContent('customer');
+        };
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

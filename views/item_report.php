@@ -28,14 +28,14 @@
         }
 
         .table-container {
-            flex-grow: 1; /* Expand to fill remaining space */
-            overflow-y: auto; /* Scrollable content if needed */
-            max-height: 500px; /* Set a fixed height for the table container */
+            flex-grow: 1; 
+            overflow-y: auto; 
+            max-height: 500px;
         }
 
         .table {
-            margin-bottom: 20px; /* Add bottom margin */
-            height: auto; /* Make table height responsive */
+            margin-bottom: 20px;
+            height: auto;
         }
 
         .table th, .table td {
@@ -61,7 +61,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- PHP code to dynamically populate the table with data -->
                     <?php
                     if (isset($items) && count($items) > 0) {
                         foreach ($items as $item) {
