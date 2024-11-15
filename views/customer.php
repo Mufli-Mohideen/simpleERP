@@ -60,6 +60,7 @@
             <div class="tab-pane fade show active" id="addCustomerForm" role="tabpanel">
                 <h4 class="mt-4">Add New Customer</h4>
                 <form method="POST" action="http://localhost/CsquareProject/controllers/CustomerController.php">
+                    <input type="hidden" name="action" value="add">
                 <div class="mb-3">
                     <label for="addTitle" class="form-label">Title</label>
                     <select class="form-select" id="addTitle" name="title" required>
@@ -88,31 +89,32 @@
                     <div class="mb-3">
                         <label for="addDistrict" class="form-label">District</label>
                         <select class="form-select" id="addDistrict" name="district" required>
-                            <option value="" selected disabled>Select District</option>
-                            <option value="Ampara">Ampara</option>
-                            <option value="Anuradhapura">Anuradhapura</option>
-                            <option value="Badulla">Badulla</option>
-                            <option value="Batticaloa">Batticaloa</option>
-                            <option value="Colombo">Colombo</option>
-                            <option value="Galle">Galle</option>
-                            <option value="Gampaha">Gampaha</option>
-                            <option value="Hambantota">Hambantota</option>
-                            <option value="Jaffna">Jaffna</option>
-                            <option value="Kalutara">Kalutara</option>
-                            <option value="Kandy">Kandy</option>
-                            <option value="Kegalle">Kegalle</option>
-                            <option value="Kilinochchi">Kilinochchi</option>
-                            <option value="Kurunegala">Kurunegala</option>
-                            <option value="Mannar">Mannar</option>
-                            <option value="Matale">Matale</option>
-                            <option value="Matara">Matara</option>
-                            <option value="Moneragala">Moneragala</option>
-                            <option value="Mullaitivu">Mullaitivu</option>
-                            <option value="Nuwara Eliya">Nuwara Eliya</option>
-                            <option value="Polonnaruwa">Polonnaruwa</option>
-                            <option value="Puttalam">Puttalam</option>
-                            <option value="Rathnapura">Rathnapura</option>
-                            <option value="Vavuniya">Vavuniya</option>
+                        <option value="" selected disabled>Select District</option>
+                            <option value="1">Ampara</option>
+                            <option value="2">Anuradhapura</option>
+                            <option value="3">Badulla</option>
+                            <option value="4">Batticaloa</option>
+                            <option value="5">Colombo</option>
+                            <option value="6">Galle</option>
+                            <option value="7">Gampaha</option>
+                            <option value="8">Hambantota</option>
+                            <option value="9">Jaffna</option>
+                            <option value="10">Kalutara</option>
+                            <option value="11">Trincomalee</option>
+                            <option value="12">Kandy</option>
+                            <option value="13">Kegalle</option>
+                            <option value="14">Kilinochchi</option>
+                            <option value="15">Kurunegala</option>
+                            <option value="16">Mannar</option>
+                            <option value="17">Matale</option>
+                            <option value="18">Matara</option>
+                            <option value="19">Moneragala</option>
+                            <option value="20">Mullaitivu</option>
+                            <option value="21">Nuwara Eliya</option>
+                            <option value="22">Polonnaruwa</option>
+                            <option value="23">Puttalam</option>
+                            <option value="24">Rathnapura</option>
+                            <option value="25">Vavuniya</option>
                         </select>
                     </div>
 
@@ -124,7 +126,8 @@
             <!-- Update Customer Form -->
             <div class="tab-pane fade" id="updateCustomerForm" role="tabpanel">
                 <h4 class="mt-4">Update Customer</h4>
-                <form method="POST">
+                <form method="POST" action="http://localhost/CsquareProject/controllers/CustomerController.php">
+                    <input type="hidden" name="action" value="update">
                     <div class="mb-3">
                         <label for="updateId" class="form-label">Customer ID</label>
                         <input type="text" class="form-control" id="updateId" name="customer_id" required>
@@ -156,7 +159,34 @@
                     </div>
                     <div class="mb-3">
                         <label for="updateDistrict" class="form-label">District</label>
-                        <input type="text" class="form-control" id="updateDistrict" name="district">
+                        <select class="form-select" id="updateDistrict" name="district" required>
+                        <option value="" selected disabled>Select District</option>
+                            <option value="1">Ampara</option>
+                            <option value="2">Anuradhapura</option>
+                            <option value="3">Badulla</option>
+                            <option value="4">Batticaloa</option>
+                            <option value="5">Colombo</option>
+                            <option value="6">Galle</option>
+                            <option value="7">Gampaha</option>
+                            <option value="8">Hambantota</option>
+                            <option value="9">Jaffna</option>
+                            <option value="10">Kalutara</option>
+                            <option value="11">Trincomalee</option>
+                            <option value="12">Kandy</option>
+                            <option value="13">Kegalle</option>
+                            <option value="14">Kilinochchi</option>
+                            <option value="15">Kurunegala</option>
+                            <option value="16">Mannar</option>
+                            <option value="17">Matale</option>
+                            <option value="18">Matara</option>
+                            <option value="19">Moneragala</option>
+                            <option value="20">Mullaitivu</option>
+                            <option value="21">Nuwara Eliya</option>
+                            <option value="22">Polonnaruwa</option>
+                            <option value="23">Puttalam</option>
+                            <option value="24">Rathnapura</option>
+                            <option value="25">Vavuniya</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Update Customer</button>
                 </form>
@@ -165,7 +195,8 @@
             <!-- Delete Customer Form -->
             <div class="tab-pane fade" id="deleteCustomerForm" role="tabpanel">
                 <h4 class="mt-4">Delete Customer</h4>
-                <form method="POST" action="delete_customer.php">
+                <form method="POST" action="http://localhost/CsquareProject/controllers/CustomerController.php">
+                <input type="hidden" name="action" value="delete">
                     <div class="mb-3">
                         <label for="deleteId" class="form-label">Customer ID</label>
                         <input type="text" class="form-control" id="deleteId" name="customer_id" required>
@@ -176,24 +207,53 @@
 
             <!-- Show All Customers Section -->
             <div class="tab-pane fade" id="showAllCustomers" role="tabpanel">
-                <h4 class="mt-4">All Customers</h4>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Customer ID</th>
-                            <th>Title</th>
-                            <th>First Name</th>
-                            <th>Middle Name</th>
-                            <th>Last Name</th>
-                            <th>Contact No</th>
-                            <th>District</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+    <h4 class="mt-4">All Customers</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Contact No</th>
+                <th>District</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+            require_once '../config/db.php';
+            require_once '../models/Customer.php';
 
-                    </tbody>
-                </table>
-            </div>
+            $database = new Database();
+            $conn = $database->getConnection();
+
+            $customerModel = new Customer($conn);
+
+            $customers = $customerModel->getAllCustomers();
+
+            if (isset($customers) && !empty($customers)) {
+                foreach ($customers as $customer) {
+                    echo "<tr>";
+                    echo "<td>" . htmlspecialchars($customer->getTitle() ?? 'N/A') . "</td>";
+                    echo "<td>" . htmlspecialchars($customer->getFirstName() ?? 'N/A') . "</td>";
+                    echo "<td>" . htmlspecialchars($customer->getMiddleName() ?? 'N/A') . "</td>";
+                    echo "<td>" . htmlspecialchars($customer->getLastName() ?? 'N/A') . "</td>";
+                    echo "<td>" . htmlspecialchars($customer->getContactNo() ?? 'N/A') . "</td>";
+                    echo "<td>" . htmlspecialchars($customer->getDistrict() ?? 'N/A') . "</td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='7' class='text-center'>No customers found</td></tr>";
+            }
+        ?>
+
+
+
+</tbody>
+
+    </table>
+</div>
+
         </div>
     </div>
 

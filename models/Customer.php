@@ -13,6 +13,7 @@ class Customer {
     private $last_name;
     private $contact_no;
     private $district;
+    private $customer_id;
     private $conn;
 
     public function __construct($conn) {
@@ -20,6 +21,11 @@ class Customer {
     }
 
     // Setters
+
+    public function setCustomerId($customer_id){
+        $this->customer_id = $customer_id;
+    }
+
     public function setTitle($title) {
         $this->title = $title;
     }
@@ -45,6 +51,7 @@ class Customer {
     }
 
     // Getters
+
     public function getId() {
         return $this->id;
     }
@@ -111,15 +118,28 @@ class Customer {
 
     // Method (get all customers)
     public function getAllCustomers() {
-        $query = "SELECT * FROM customer";
+        $query = "SELECT title, first_name, middle_name, last_name, contact_no, district FROM customer";
         $result = $this->conn->query($query);
         $customers = [];
-        
-        while ($row = $result->fetch_assoc()) {
-            $customers[] = $row;
+
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $customer = new Customer($this->conn);
+
+                $customer->setTitle($row['title']);
+                $customer->setFirstName($row['first_name']);
+                $customer->setMiddleName($row['middle_name']);
+                $customer->setLastName($row['last_name']);
+                $customer->setContactNo($row['contact_no']);
+                $customer->setDistrict($row['district']);
+
+                $customers[] = $customer;
+            }
         }
+
         return $customers;
     }
+    
 
     // Method (delete customer)
     public function deleteCustomer($customer_id) {
