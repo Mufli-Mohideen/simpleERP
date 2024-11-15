@@ -1,22 +1,31 @@
-# SimpleERP
+# **SimpleERP**  
 
-SimpleERP is a lightweight enterprise resource planning (ERP) system designed to simplify business management. This project allows users to manage business operations efficiently, integrating database support and a user-friendly interface.
+Welcome to **SimpleERP** – a **lightweight enterprise resource planning (ERP)** system designed to simplify business management processes. With a user-friendly interface and robust database integration, SimpleERP helps businesses efficiently manage customer data, inventory, and invoice generation.
 
-## Prerequisites
+---
 
-Before running the project, ensure you have the following installed:
+## **Prerequisites**
 
-- **XAMPP or WAMP**: To serve the project locally.
+Before running the project, ensure you have the following tools installed on your system:
+
+- **XAMPP or WAMP**: To set up a local PHP server.
 - **MySQL**: For database management.
 - **Git**: To clone the project repository.
-- A modern web browser (e.g., Google Chrome, Mozilla Firefox).
+- A modern web browser such as **Google Chrome**, **Mozilla Firefox**, or **Microsoft Edge**.
 
-## Installation Guide
+---
+
+## **Installation Guide**
+
+Follow these steps to get SimpleERP running on your local machine:
+
+---
 
 ### 1. Clone the Project
 Use the following command to clone the repository to your local machine:
 ```bash
-git clone <repository-url>
+git clone https://github.com/Mufli-Mohideen/simpleERP
+```
 
 ### 2. Move to the Web Server Directory
 Copy the project folder into the web server directory:
@@ -37,7 +46,7 @@ Copy the project folder into the web server directory:
    ```php
    $db_user = 'your_username';
    $db_pass = 'your_password';
-
+   ```
 ## 5. Run the Project
 
 Open your browser and navigate to: http://localhost/CsquareProject/
