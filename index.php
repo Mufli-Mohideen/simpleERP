@@ -7,8 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <style>
-        @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap");
-        
         .loader-container {
             position: fixed;
             top: 0;
@@ -29,8 +27,8 @@
             font-weight: bolder;
             text-transform: uppercase;
             color: #0000;
-            -webkit-text-stroke: 1px #0056b3;
-            background: conic-gradient(#0056b3 0 0) 0/0 100% no-repeat text;
+            -webkit-text-stroke: 1px #000080;
+            background: conic-gradient(#000080 0 0) 0/0 100% no-repeat text;
             animation: l11 2s steps(8) infinite;
         }
 
@@ -50,6 +48,11 @@
         <div class="loader"></div>
     </div>
 
+    <script>
+        setTimeout(() => {
+            window.location.href = "views/dashboard.php";
+        }, 3000);
+    </script>
 
 </body>
 </html>
