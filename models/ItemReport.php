@@ -4,11 +4,11 @@ require_once '../config/db.php';
 
 class ItemReportModel {
     private $db;
+
     public function __construct($conn) {
         $this->db = $conn;
     }
 
-    // Method(Item Report)
     public function getItemReport() {
         $sql = "
             SELECT 
@@ -29,9 +29,18 @@ class ItemReportModel {
         ";
 
         $stmt = $this->db->prepare($sql);
+
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $stmt->get_result();
+        $items = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $items[] = $row;
+        }
+
+        // Return the items
+        return $items;
     }
 }
 

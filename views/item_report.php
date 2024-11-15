@@ -1,3 +1,16 @@
+<?php
+
+require_once '../config/db.php';
+require_once '../models/ItemReport.php';
+
+$database = new Database();
+$conn = $database->getConnection();
+
+$itemReportModel = new ItemReportModel($conn);
+
+$items = $itemReportModel->getItemReport();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,8 +41,8 @@
         }
 
         .table-container {
-            flex-grow: 1; 
-            overflow-y: auto; 
+            flex-grow: 1;
+            overflow-y: auto;
             max-height: 500px;
         }
 

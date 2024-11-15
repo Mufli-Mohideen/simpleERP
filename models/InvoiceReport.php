@@ -3,9 +3,15 @@ include_once '../config/db.php';
 
 class InvoiceReport {
 
-    //Method(Create Invoice Reports based on Start and End date)
+    private $conn;
+
+    public function __construct($conn) {
+        $this->conn = $conn; 
+    }
+
+    // Method to get invoices within the given date range with customer details
     public function getInvoicesWithCustomerDetails($startDate, $endDate) {
-        global $conn;
+        // SQL query to fetch invoice data with customer details
         $query = "
             SELECT 
                 i.invoice_no,
@@ -26,28 +32,33 @@ class InvoiceReport {
                 i.date BETWEEN ? AND ?
         ";
 
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param('ss', $startDate, $endDate);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        // Prepare and bind parameters
+        if ($stmt = $this->conn->prepare($query)) {
+            $stmt->bind_param('ss', $startDate, $endDate);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
-        $report = [];
-        while ($row = $result->fetch_assoc()) {
-            // Combine Customer Name
-            $fullName = $row['title'] . ' ' . $row['first_name'] . ' ' . $row['middle_name'] . ' ' . $row['last_name'];
-            
-            $report[] = [
-                'invoice_no' => $row['invoice_no'],
-                'date' => $row['date'],
-                'customer' => $fullName,
-                'district' => $row['district'],
-                'item_count' => $row['item_count'],
-                'amount' => $row['amount']
-            ];
+            // Array to store the report data
+            $report = [];
+            while ($row = $result->fetch_assoc()) {
+                // Combine customer full name
+                $fullName = $row['title'] . ' ' . $row['first_name'] . ' ' . $row['middle_name'] . ' ' . $row['last_name'];
+
+                // Add data to the report array
+                $report[] = [
+                    'invoice_no' => $row['invoice_no'],
+                    'date' => $row['date'],
+                    'customer' => $fullName,
+                    'district' => $row['district'],
+                    'item_count' => $row['item_count'],
+                    'amount' => $row['amount']
+                ];
+            }
+
+            return $report;
         }
 
-        return $report;
+        return false; // If query preparation fails
     }
 }
-
 ?>
