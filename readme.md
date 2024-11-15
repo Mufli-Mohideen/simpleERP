@@ -1,4 +1,11 @@
-# **SimpleERP**  
+<h1 align="center">
+SimpleERP 
+</h1>
+
+<p align="center">
+  <img src="https://drive.google.com/uc?id=1olfMsiOQPFjCCnQ_ujLUSAT_TqZlnDxx" alt="SimpleERP Image"/>
+</p>
+
 
 Welcome to **SimpleERP** – a **lightweight enterprise resource planning (ERP)** system designed to simplify business management processes. With a user-friendly interface and robust database integration, SimpleERP helps businesses efficiently manage customer data, inventory, and invoice generation.
 
