@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/customer_styles.css">
     <style>
+        body {
+            overflow: hidden;
+        }
+
         .custom-container {
             margin: auto;
             padding-top: 10px;
-            height: 100vh;
-            overflow: hidden;
+            height: 110vh;
         }
 
         /* Ensure that each form starts from the top */
         .tab-pane {
-            max-height: 600px; /* Adjust based on your design */
-            overflow-y: auto; /* Add scrolling if content exceeds height */
+            max-height: 600px;
+            overflow-y: auto;
             padding-top: 20px;
+            scroll-behavior: smooth;
         }
 
         /* Add padding between tab content sections */
@@ -26,22 +32,27 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="container custom-container">
         <!-- Tabs for switching between forms -->
         <ul class="nav nav-tabs" id="customerTabs" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="add-tab" data-bs-toggle="tab" data-bs-target="#addCustomerForm" type="button" role="tab">Add Customer</button>
+                <button class="nav-link active" id="add-tab" data-bs-toggle="tab" data-bs-target="#addCustomerForm"
+                    type="button" role="tab">Add Customer</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="update-tab" data-bs-toggle="tab" data-bs-target="#updateCustomerForm" type="button" role="tab">Update Customer</button>
+                <button class="nav-link" id="update-tab" data-bs-toggle="tab" data-bs-target="#updateCustomerForm"
+                    type="button" role="tab">Update Customer</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="delete-tab" data-bs-toggle="tab" data-bs-target="#deleteCustomerForm" type="button" role="tab">Delete Customer</button>
+                <button class="nav-link" id="delete-tab" data-bs-toggle="tab" data-bs-target="#deleteCustomerForm"
+                    type="button" role="tab">Delete Customer</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="show-tab" data-bs-toggle="tab" data-bs-target="#showAllCustomers" type="button" role="tab">Show All Customers</button>
+                <button class="nav-link" id="show-tab" data-bs-toggle="tab" data-bs-target="#showAllCustomers"
+                    type="button" role="tab">Show All Customers</button>
             </li>
         </ul>
 
@@ -75,7 +86,7 @@
                         <label for="addDistrict" class="form-label">District</label>
                         <input type="text" class="form-control" id="addDistrict" name="district" required>
                     </div>
-                    <button type="submit" class="btn btn-success">Save Customer</button>
+                    <button type="submit" class="btn btn-success w-100">Save Customer</button>
                 </form>
             </div>
 
@@ -111,7 +122,7 @@
                         <label for="updateDistrict" class="form-label">District</label>
                         <input type="text" class="form-control" id="updateDistrict" name="district">
                     </div>
-                    <button type="submit" class="btn btn-primary">Update Customer</button>
+                    <button type="submit" class="btn btn-primary w-100">Update Customer</button>
                 </form>
             </div>
 
@@ -123,7 +134,7 @@
                         <label for="deleteId" class="form-label">Customer ID</label>
                         <input type="text" class="form-control" id="deleteId" name="customer_id" required>
                     </div>
-                    <button type="submit" class="btn btn-danger">Delete Customer</button>
+                    <button type="submit" class="btn btn-danger w-100">Delete Customer</button>
                 </form>
             </div>
 
@@ -143,6 +154,7 @@
                         </tr>
                     </thead>
                     <tbody>
+
                     </tbody>
                 </table>
             </div>
@@ -153,4 +165,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>
