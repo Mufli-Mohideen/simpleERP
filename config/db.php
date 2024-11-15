@@ -1,4 +1,5 @@
 <?php
+//Database Class for Initializing Connection with MySQL Database
 class Database {
     private $servername = "localhost";
     private $username = "root";

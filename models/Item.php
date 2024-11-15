@@ -94,7 +94,7 @@ class Item {
         $stmt->execute();
         $result = $stmt->get_result();
 
-        return $result->fetch_all(MYSQLI_ASSOC);  // Return as an associative array
+        return $result->fetch_all(MYSQLI_ASSOC); 
     }
 }
 ?>

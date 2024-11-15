@@ -9,9 +9,7 @@ class InvoiceReport {
         $this->conn = $conn; 
     }
 
-    // Method to get invoices within the given date range with customer details
     public function getInvoicesWithCustomerDetails($startDate, $endDate) {
-        // SQL query to fetch invoice data with customer details
         $query = "
             SELECT 
                 i.invoice_no,
@@ -38,13 +36,10 @@ class InvoiceReport {
             $stmt->execute();
             $result = $stmt->get_result();
 
-            // Array to store the report data
             $report = [];
             while ($row = $result->fetch_assoc()) {
-                // Combine customer full name
                 $fullName = $row['title'] . ' ' . $row['first_name'] . ' ' . $row['middle_name'] . ' ' . $row['last_name'];
 
-                // Add data to the report array
                 $report[] = [
                     'invoice_no' => $row['invoice_no'],
                     'date' => $row['date'],
@@ -58,7 +53,7 @@ class InvoiceReport {
             return $report;
         }
 
-        return false; // If query preparation fails
+        return false;
     }
 }
 ?>

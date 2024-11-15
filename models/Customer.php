@@ -1,3 +1,5 @@
+//Customer Model Used for Seperation of Logic of Customers
+
 <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -86,7 +88,6 @@ class Customer {
         $query = "INSERT INTO customer (title, first_name, middle_name, last_name, contact_no, district) 
                   VALUES (?, ?, ?, ?, ?, ?)";
     
-        // Prepare statement
         if ($stmt = $this->conn->prepare($query)) {
             // Bind parameters to the prepared statement
             $stmt->bind_param("ssssss", $this->title, $this->first_name, $this->middle_name, $this->last_name, $this->contact_no, $this->district);
